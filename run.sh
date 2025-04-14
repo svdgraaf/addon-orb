@@ -13,4 +13,4 @@ bashio::log.info "ORB_DATA_DIR set to ${ORB_DATA_DIR}"
 
 # Run orb service
 bashio::log.info "Starting orb service..."
-exec orb service
+exec orb sensor
