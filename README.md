@@ -24,4 +24,4 @@ The add-on stores its data in `/root/.config/orb` which is configured as persist
 
 ## Architecture Support
 
-This add-on supports multiple architectures (aarch64, amd64, armhf, armv7).
+This add-on supports multiple architectures (aarch64, amd64, armv7).
