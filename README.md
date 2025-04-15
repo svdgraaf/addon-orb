@@ -13,6 +13,7 @@ This add-on runs an [Orb](https://www.orb.net) sensor in your Home Assistant env
 3. Find the "Orb" add-on in the store
 4. Click Install
 5. Enable auto-updates.
+6. Click Start
 
 ## Configuration
 

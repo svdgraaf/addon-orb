@@ -13,6 +13,7 @@ Follow these steps to install the add-on:
 3. Find the "Orb" add-on in the store
 4. Click Install
 5. Enable auto-updates.
+6. Click Start
 
 ## How to use
 
