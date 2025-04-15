@@ -1,4 +1,4 @@
-# Orb - Home Assistant Add-on
+# Orb
 
 Home Assistant add-on for Orb.
 
