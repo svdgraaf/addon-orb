@@ -1,5 +1,5 @@
 name: "Orb"
-description: "Orb sensor to continuoiusly monitor network responsiveness and reliability."
+description: "Orb sensor to continuously monitor network responsiveness and reliability."
 version: "0.12.29"
 slug: "orb_homeassistant"
 init: false
