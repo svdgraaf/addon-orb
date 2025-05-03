@@ -1,4 +1,4 @@
-name: "Orb"
+name: "Orb custom"
 description: "Orb sensor to continuously monitor network responsiveness and reliability."
 version: "0.12.35"
 slug: "orb_svdgraaf"
