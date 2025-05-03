@@ -12,7 +12,7 @@ arch:
   - amd64
   - armv7
 boot: auto
-options:
-schema:
+options: {}
+schema: {}
 # services:
 #   - mqtt:need
