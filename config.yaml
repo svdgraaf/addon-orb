@@ -1,4 +1,4 @@
-name: "Orb custom"
+name: "orb-svdgraaf"
 description: "Orb custom sensor with MQTT"
 version: "1.0.1"
 slug: "orb_svdgraaf"
