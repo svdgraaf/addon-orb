@@ -4,7 +4,7 @@ version: "1.0.1"
 slug: "orb_svdgraaf"
 init: false
 host_network: true
-image: "svdgraaf/orb-custom-mqtt:latest"
+# image: "svdgraaf/orb-custom-mqtt:latest"
 environment:
   ORB_DATA_DIR: /data
 arch:
