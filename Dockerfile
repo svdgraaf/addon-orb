@@ -4,9 +4,9 @@ FROM orbforge/orb:latest
 RUN apk add --no-cache mosquitto-clients
 
 # Add scripts
-COPY run.sh /run.sh
+COPY mqtt.sh /mqtt.sh
 COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /run.sh /entrypoint.sh
+RUN chmod +x /mqtt.sh /entrypoint.sh
 
 # Override the entrypoint to inject the background script
 ENTRYPOINT ["/entrypoint.sh"]
