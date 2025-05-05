@@ -1,7 +1,7 @@
-name: "orb-svdgraaf"
+name: "orb"
 description: "Orb custom sensor with MQTT"
 version: "1.0.1"
-slug: "orb_svdgraaf"
+slug: "orb"
 init: false
 host_network: true
 # image: "svdgraaf/orb-custom-mqtt:latest"

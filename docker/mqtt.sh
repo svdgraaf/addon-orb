@@ -1,21 +1,28 @@
-#!/usr/bin/with-contenv bashio
+#!/bin/sh
 
-set -e
+set -x
 
-MQTT_HOST="${HASSIO_MQTT_HOST:-core-mosquitto}"
-MQTT_PORT="${HASSIO_MQTT_PORT:-1883}"
-MQTT_USER="$HASSIO_MQTT_USERNAME"
-MQTT_PASS="$HASSIO_MQTT_PASSWORD"
+AUTH_HEADER="Authorization: Bearer ${SUPERVISOR_TOKEN}"
+MQTT_INFO=$(curl -s -H "$AUTH_HEADER" http://supervisor/services/mqtt)
 
-DISCOVERY_TOPIC="homeassistant/sensor/orb_score/config"
-STATE_TOPIC="orb_svdgraaf/status"
+MQTT_HOST=$(echo "$MQTT_INFO" | jq -r '.data.host')
+MQTT_PORT=$(echo "$MQTT_INFO" | jq -r '.data.port')
+MQTT_USER=$(echo "$MQTT_INFO" | jq -r '.data.username')
+MQTT_PASS=$(echo "$MQTT_INFO" | jq -r '.data.password')
+
+echo "MQTT Host: $MQTT_HOST"
+echo "MQTT Port: $MQTT_PORT"
+echo "MQTT User: $MQTT_USER"
+
+DISCOVERY_TOPIC="homeassistant/sensor/orb/config"
+STATE_TOPIC="orb/status"
 
 # Publish MQTT Discovery message once (retained)
 mosquitto_pub -h "$MQTT_HOST" -p "$MQTT_PORT" -u "$MQTT_USER" -P "$MQTT_PASS" \
   -t "$DISCOVERY_TOPIC" \
   -m '{
     "name": "Orb Score",
-    "state_topic": "orb_svdgraaf/status",
+    "state_topic": "orb/status",
     "unit_of_measurement": "%",
     "value_template": "{{ value_json.display }}",
     "unique_id": "orb_score_sensor",
@@ -32,10 +39,11 @@ mosquitto_pub -h "$MQTT_HOST" -p "$MQTT_PORT" -u "$MQTT_USER" -P "$MQTT_PASS" \
 while true; do
   # Replace this with your real data source
   ORB_OUTPUT="$(/app/orb summary || echo '{}')"
+  echo "ORB_OUTPUT: $ORB_OUTPUT"
 
   # Publish Orb Summary to MQTT
   mosquitto_pub -h "$MQTT_HOST" -p "$MQTT_PORT" -u "$MQTT_USER" -P "$MQTT_PASS" \
     -t "$STATE_TOPIC" -m "$ORB_OUTPUT"
 
-  sleep 30
+  sleep 5
 done
