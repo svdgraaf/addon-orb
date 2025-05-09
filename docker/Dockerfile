@@ -1,12 +1,12 @@
 FROM orbforge/orb:latest
 
 # Install mosquitto_pub/sub via system package manager
-RUN apk add --no-cache mosquitto-clients
+RUN apk add --no-cache mosquitto-clients curl jq
 
 # Add scripts
-COPY mqtt.sh /mqtt.sh
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /mqtt.sh /entrypoint.sh
+COPY mqtt.sh /app/mqtt.sh
+COPY entrypoint.sh /app/entrypoint.sh
+RUN chmod +x /app/mqtt.sh /app/entrypoint.sh
 
 # Override the entrypoint to inject the background script
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/app/entrypoint.sh"]
