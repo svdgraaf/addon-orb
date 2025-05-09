@@ -1,18 +1,16 @@
-name: "orb"
-description: "Orb custom sensor with MQTT"
-version: "1.0.1"
-slug: "orb"
+name: "Orb"
+description: "Orb sensor to continuously monitor network responsiveness and reliability."
+version: "1.0.29"
+slug: "orb_homeassistant"
 init: false
+image: "svdgraaf/orb-custom-mqtt"
 host_network: true
-image: "svdgraaf/orb-custom-mqtt:latest"
-environment:
-  ORB_DATA_DIR: /data
 arch:
   - aarch64
   - amd64
   - armv7
+environment:
+  ORB_DATA_DIR: /data
 boot: auto
-options: {}
-schema: {}
 services:
   - mqtt:need
